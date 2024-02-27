@@ -1,8 +1,8 @@
-import 'package:dos_fa_app/screens/generate_code.dart';
-import 'package:dos_fa_app/screens/verify_code.dart';
 import 'package:flutter/material.dart';
+import 'package:kit_2fa/screens/generate_code.dart';
+import 'package:kit_2fa/screens/verify_code.dart';
 
-class Flutter2FA {
+class Kit2FA {
   Future<void> activate(
       {required BuildContext context,
       required String appName,

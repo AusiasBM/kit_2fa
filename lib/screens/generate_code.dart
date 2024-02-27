@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:otp/otp.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:bip39/bip39.dart' as bip39;
 
 class GenerateCode extends StatefulWidget {
   final String appName;
@@ -18,10 +17,8 @@ class GenerateCode extends StatefulWidget {
 
 class _GenerateCodeState extends State<GenerateCode> {
   String secKey = '';
-  String recoveryPhrase = '';
 
   generateCode() {
-    recoveryPhrase = bip39.generateMnemonic();
     secKey = OTP.randomSecret();
     setState(() {});
   }
@@ -75,31 +72,6 @@ class _GenerateCodeState extends State<GenerateCode> {
                 Clipboard.setData(ClipboardData(text: secKey));
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('copied secret key!')),
-                );
-              },
-              child: const Icon(Icons.copy),
-            ),
-          ],
-        ),
-        const SizedBox(height: 30),
-        Text(
-          'Recovery Phrase',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-        const SizedBox(height: 4),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: SelectableText(recoveryPhrase)),
-            GestureDetector(
-              onTap: () {
-                Clipboard.setData(ClipboardData(text: recoveryPhrase));
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('copied recovery phrase!')),
                 );
               },
               child: const Icon(Icons.copy),

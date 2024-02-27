@@ -1,5 +1,5 @@
-import 'package:dos_fa_app/flutter_2fa.dart';
 import 'package:flutter/material.dart';
+import 'package:kit_2fa/kit_2fa.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +34,7 @@ class MyHome extends StatelessWidget {
                   width: double.infinity,
                   height: 56,
                   child: ElevatedButton(
-                    onPressed: () => Flutter2FA().activate(
+                    onPressed: () => Kit2FA().activate(
                       context: context,
                       appName: "Matrix Desktop",
                       info: "ADMIN 12050",
@@ -46,7 +46,7 @@ class MyHome extends StatelessWidget {
                   width: double.infinity,
                   height: 56,
                   child: ElevatedButton(
-                    onPressed: () => Flutter2FA()
+                    onPressed: () => Kit2FA()
                         .verify(context: context, page: const Success()),
                     style: ButtonStyle(
                       backgroundColor:
